@@ -14,7 +14,7 @@ import com.mahendra.jpal.repository.TeacherRepository;
 
 @RestController
 @RequestMapping("/t")
-public class TeacherController {
+public class TeacherController1 {
 
 	@Autowired
 	private TeacherRepository teacherRepository;

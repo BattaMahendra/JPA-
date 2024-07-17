@@ -1,0 +1,55 @@
+Hibernate is a popular Java-based Object-Relational Mapping (ORM) framework that simplifies database interaction in Java applications.
+ However, like any other technology, Hibernate comes with its own set of challenges, one of which is the N+1 problem.
+ In this blog post, we’ll dive into what the N+1 problem is, why it occurs, and how to resolve it with Java code examples
+
+What is the N+1 Problem in Hibernate?
+The N+1 problem is a performance issue that occurs when fetching data from a relational database using Hibernate.
+It gets its name from the way it manifests: for each entity fetched, an additional query is executed to fetch its associated entities.
+This can quickly lead to a large number of queries being executed, resulting in poor application performance.
+
+Let’s illustrate this problem with an example. Suppose you have two entities: Author and Book, with a one-to-many relationship where one author can have multiple books.
+ If you retrieve a list of authors and then iterate through each author to access their books, Hibernate will generate a separate SQL query for each author's books.
+ This results in N+1 queries, where N is the number of authors.
+
+Why Does the N+1 Problem Occur?
+The N+1 problem occurs because of Hibernate’s default fetching strategy.
+ By default, Hibernate uses lazy loading for associations, which means that associated entities are loaded only when they are accessed.
+  This behavior helps reduce unnecessary data retrieval, but it can lead to the N+1 problem when not used strategically.
+
+How to Resolve the N+1 Problem
+To resolve the N+1 problem in Hibernate, you can employ several strategies, including:
+
+Eager Fetching : You can change the fetching strategy to eager loading for specific associations using annotations or XML configuration.
+This ensures that associated entities are loaded along with the main entity in a single query.
+
+@OneToMany(fetch = FetchType.EAGER)
+@JoinColumn(name = "author_id")
+private List<Book> books;
+Fetch Joins:Use the JOIN FETCH clause in your HQL (Hibernate Query Language)
+or JPQL (Java Persistence Query Language) queries to fetch associated entities eagerly.
+
+String hql = "SELECT a FROM Author a JOIN FETCH a.books";
+List<Author> authors = entityManager.createQuery(hql, Author.class).getResultList();
+Batch Fetching : Implement batch fetching to retrieve multiple entities in a single query.
+This can be done using Hibernate-specific features like @BatchSize.
+
+@BatchSize(size = 10)
+private List<Book> books;
+Subselect Fetching : Subselect fetching is another strategy in Hibernate to address the N+1 problem. It allows you to fetch associated entities using subselect queries, which can be particularly useful when you want to load related data lazily but still avoid the N+1 query issue.
+
+@OneToMany(fetch = FetchType.LAZY)
+@Fetch(FetchMode.SUBSELECT)
+@JoinColumn(name = "author_id")
+private List<Book> books;
+
+Lazy loading vs eager loading
+
+When to use what?
+
+The basic parameter that we use to judge between each strategy is that we need to limit the number of queries to the server.
+
+It is a good idea to use Eager Loading when the relations are not too much.
+ Thus, Eager Loading is a good practice to reduce further queries on the Server.
+Use Eager Loading when you are sure that you will be using related entities with the main entity everywhere.
+Use Lazy Loading when you are using one-to-many collections.
+Use Lazy Loading when you are sure that you are not using related entities instantly.
