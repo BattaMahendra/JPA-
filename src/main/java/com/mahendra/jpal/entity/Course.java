@@ -15,6 +15,7 @@ import java.util.Set;
 //import jakarta.persistence.ManyToMany;
 //import jakarta.persistence.ManyToOne;
 //import jakarta.persistence.SequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -56,11 +57,10 @@ public class Course {
 	private String courseName;
 	private int credits;
 	
-//	@OneToOne(
-////			give the variable of Course object that you have defined in the CourseMaterial class
-//			mappedBy = "course"
-//			)
-//	private CourseMaterial courseMaterial;
+	@OneToMany(
+			mappedBy = "course"
+			)
+	private Set<CourseMaterial> courseMaterials;
 	
 	
 //	this will create a colomn in course table

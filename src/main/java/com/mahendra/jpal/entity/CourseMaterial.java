@@ -1,5 +1,6 @@
 package com.mahendra.jpal.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -43,14 +44,14 @@ public class CourseMaterial {
 	private long courseMaterialId;
 	private String url;
 	
-	@OneToOne(
+	@ManyToOne(
 			
 			
 			
 //			we use cascade to enter data into course table from course material
 //			whenever we add a new course material , the course is directly added into course table
 			
-				cascade = CascadeType.ALL,
+				//cascade = CascadeType.ALL,
 				
 				fetch = FetchType.LAZY
 			
@@ -63,6 +64,7 @@ public class CourseMaterial {
 			
 			)
 	@LazyToOne(value = LazyToOneOption.NO_PROXY)
+	@JsonIgnore
 	private Course course;
 
 	public long getCourseMaterialId() {

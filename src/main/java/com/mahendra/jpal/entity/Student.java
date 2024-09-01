@@ -16,6 +16,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.engine.internal.Cascade;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -72,6 +74,13 @@ public class Student {
 	private String studentEmail;
 	@Embedded
 	private Parent parent;
+
+	//each student will be having a single address
+	//one to one mapping with Address class primary key addressId
+	//this will create 'address_id' coloumn in student table.
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "addressId")
+	private Address address;
 
 	@ManyToMany(mappedBy = "students")
 	// we use this annotation to avoid circular dependency and infinite looping
