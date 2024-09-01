@@ -1,7 +1,9 @@
 package com.mahendra.jpal.entity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 //import jakarta.persistence.CascadeType;
 //import jakarta.persistence.Entity;
@@ -76,13 +78,19 @@ public class Course {
 //	multiple students can opt multiple courses 
 //	so we use manytomany and it can be only done by creating another table with studentId and courseId
 //	in that table the relations are defined
-	
+
 	@ManyToMany(
-			cascade = CascadeType.ALL
-			)
+			fetch = FetchType.LAZY,
+			cascade = {
+							CascadeType.PERSIST,
+							CascadeType.MERGE,
+							CascadeType.DETACH,
+							CascadeType.REFRESH
+					}
+					)
 	@JoinTable(
 //		this is the table that will be newly created	
-			name="student_course-table",
+			name="student_course_table",
 //			it is for the colomn of courseId and to map it 
 			joinColumns = @JoinColumn(
 								name="c_id",
@@ -96,12 +104,12 @@ public class Course {
 								referencedColumnName = "studentId"
 					)
 			)
-	private List<Student> students;
+	private Set<Student> students ;
 	
 	
 	public  void addStudents(Student s) {
 		if(students==null) {
-			students=new ArrayList<>();
+			students=new HashSet<>();
 		    students.add(s);
 //		students.add(new Student(12, "mahi", "bmc26g@gmail.com",new Parent("NAg", "891955")));
 		}

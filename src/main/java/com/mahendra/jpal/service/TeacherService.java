@@ -1,10 +1,10 @@
-package com.mahendra.jpal.controller;
+package com.mahendra.jpal.service;
 
 
 import com.mahendra.jpal.entity.Teacher;
-import com.mahendra.jpal.repository.HibernateTeacherRepository;
-import com.mahendra.jpal.repository.JdbcTeacherRepository;
-import com.mahendra.jpal.repository.TeacherRepository;
+import com.mahendra.jpal.repository.hibernate.HibernateTeacherRepository;
+import com.mahendra.jpal.repository.jdbc.JdbcTeacherRepository;
+import com.mahendra.jpal.repository.jpa.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

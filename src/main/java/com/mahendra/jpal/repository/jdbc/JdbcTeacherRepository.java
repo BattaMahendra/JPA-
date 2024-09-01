@@ -1,4 +1,4 @@
-package com.mahendra.jpal.repository;
+package com.mahendra.jpal.repository.jdbc;
 
 
 import com.mahendra.jpal.entity.Teacher;

@@ -53,3 +53,10 @@ It is a good idea to use Eager Loading when the relations are not too much.
 Use Eager Loading when you are sure that you will be using related entities with the main entity everywhere.
 Use Lazy Loading when you are using one-to-many collections.
 Use Lazy Loading when you are sure that you are not using related entities instantly.
+
+Hiberante entity life cycle states
+
+Entity Lifecycle States:
+Transient: A new Java object not yet persisted in the database.
+Persistent: An object associated with a Hibernate session and represented in the database.
+Detached: An object retrieved from the database but no longer associated with a session. You can re-attach it to a session for further operations.

@@ -1,4 +1,4 @@
-package com.mahendra.jpal.repository;
+package com.mahendra.jpal.repository.jpa;
 
 import org.springframework.boot.autoconfigure.mongo.MongoClientSettingsBuilderCustomizer;
 import org.springframework.data.jpa.repository.JpaRepository;

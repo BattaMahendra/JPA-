@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mahendra.jpal.entity.Student;
-import com.mahendra.jpal.repository.StudentRepository;
+import com.mahendra.jpal.repository.jpa.StudentRepository;
 
 @RestController
 @RequestMapping("/s")

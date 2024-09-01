@@ -9,6 +9,7 @@ package com.mahendra.jpal.entity;
 //import jakarta.persistence.SequenceGenerator;
 //import jakarta.persistence.Table;
 //import jakarta.persistence.UniqueConstraint;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -16,6 +17,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Data
 //?\@AllArgsConstructor
@@ -69,6 +72,11 @@ public class Student {
 	private String studentEmail;
 	@Embedded
 	private Parent parent;
+
+	@ManyToMany(mappedBy = "students")
+	// we use this annotation to avoid circular dependency and infinite looping
+	@JsonIgnore
+	private Set<Course> courses;
 	
 	
 	

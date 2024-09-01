@@ -17,6 +17,7 @@ import javax.persistence.*;
 @Entity
 @Data
 @AllArgsConstructor
+@Table(name = "teacher")
 public class Teacher {
 
 	
@@ -42,7 +43,9 @@ public class Teacher {
             strategy = GenerationType.SEQUENCE,
             generator = "teacher_sequence"
     )
+
 	private long teacherId;
+
 	private String teacherName;
 	
 //	this will create column in course table 
@@ -53,7 +56,7 @@ public class Teacher {
 //			cascade = CascadeType.ALL
 //			)
 //	@JoinColumn(
-//			
+//
 //			name="teacher_id",
 //			referencedColumnName = "teacherId"
 //			)

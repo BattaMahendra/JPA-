@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mahendra.jpal.entity.Course;
 import com.mahendra.jpal.entity.CourseMaterial;
 import com.mahendra.jpal.entity.Course_Student;
-import com.mahendra.jpal.repository.CourseMaterialRepository;
-import com.mahendra.jpal.repository.CourseRepository;
+import com.mahendra.jpal.repository.jpa.CourseMaterialRepository;
+import com.mahendra.jpal.repository.jpa.CourseRepository;
 
 @RestController
 @RequestMapping("/c")

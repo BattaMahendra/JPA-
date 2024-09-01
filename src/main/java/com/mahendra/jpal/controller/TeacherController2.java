@@ -2,6 +2,7 @@ package com.mahendra.jpal.controller;
 
 
 import com.mahendra.jpal.entity.Teacher;
+import com.mahendra.jpal.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
