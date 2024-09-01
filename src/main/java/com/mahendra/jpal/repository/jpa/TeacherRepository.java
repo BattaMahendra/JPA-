@@ -8,3 +8,7 @@ import com.mahendra.jpal.entity.Teacher;
 public interface TeacherRepository  extends JpaRepository<Teacher, Long> {
 
 }
+
+
+
+

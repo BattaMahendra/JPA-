@@ -72,5 +72,6 @@ public class TeacherService {
 
     public void deleteByIdJdbc(Long id) {
         jdbcTeacherRepository.deleteById(id);
+
     }
 }

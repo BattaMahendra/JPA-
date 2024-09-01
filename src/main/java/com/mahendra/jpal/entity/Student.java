@@ -35,6 +35,7 @@ import java.util.Set;
 				columnNames = "studentEmail"
 				
 				)
+
 		)
 public class Student {
 	
@@ -81,6 +82,10 @@ public class Student {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "addressId")
 	private Address address;
+
+
+
+
 
 	@ManyToMany(mappedBy = "students")
 	// we use this annotation to avoid circular dependency and infinite looping
