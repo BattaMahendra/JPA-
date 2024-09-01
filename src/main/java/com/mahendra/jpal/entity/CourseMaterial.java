@@ -43,7 +43,10 @@ public class CourseMaterial {
     )
 	private long courseMaterialId;
 	private String url;
-	
+
+	//many course materials will be having a single course id
+	// in OneToMany and ManyToOne , it is always good practice to make ManyToOne as strong reference
+	// in course table we define bidirectional mapping using 'mappedBy'
 	@ManyToOne(
 			
 			

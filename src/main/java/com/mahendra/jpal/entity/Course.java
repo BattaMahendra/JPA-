@@ -56,7 +56,10 @@ public class Course {
 	private long courseId;
 	private String courseName;
 	private int credits;
-	
+
+
+	// One course can have many number of materials
+	//this will create a 'course_id' coloumn in course_material table
 	@OneToMany(
 			mappedBy = "course"
 			)
