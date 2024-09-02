@@ -2,6 +2,7 @@ Hibernate is a popular Java-based Object-Relational Mapping (ORM) framework that
  However, like any other technology, Hibernate comes with its own set of challenges, one of which is the N+1 problem.
  In this blog post, we’ll dive into what the N+1 problem is, why it occurs, and how to resolve it with Java code examples
 
+
 What is the N+1 Problem in Hibernate?
 The N+1 problem is a performance issue that occurs when fetching data from a relational database using Hibernate.
 It gets its name from the way it manifests: for each entity fetched, an additional query is executed to fetch its associated entities.
