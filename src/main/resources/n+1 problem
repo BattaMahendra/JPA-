@@ -1,0 +1,84 @@
+Certainly! The N+1 selects problem is a common performance issue in Hibernate and other ORM frameworks. Here’s a simple scenario to illustrate it:
+
+### Scenario: Fetching Books and Their Authors
+
+Imagine you have two entities: `Book` and `Author`. Each `Book` has one `Author`, and each `Author` can have multiple `Books`. You want to display a list of books along with their authors.
+
+#### Entities
+
+**Book Entity:**
+```java
+@Entity
+public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id")
+    private Author author;
+
+    // Getters and setters
+}
+```
+
+**Author Entity:**
+```java
+@Entity
+public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+
+    // Getters and setters
+}
+```
+
+#### Scenario Description
+
+1. **Initial Query:**
+   You execute a query to fetch all books from the database:
+   ```java
+   List<Book> books = session.createQuery("FROM Book", Book.class).getResultList();
+   ```
+
+2. **N+1 Problem Explanation:**
+   - **Step 1:** Hibernate executes a query to fetch all books. This results in a single SQL query like:
+     ```sql
+     SELECT * FROM Book;
+     ```
+   - **Step 2:** For each book in the result set, Hibernate will execute an additional query to fetch the author for that book, due to the `@ManyToOne` relationship being lazy-loaded. If you have 10 books, Hibernate will execute 10 additional queries, one for each book to get its author.
+
+     For example:
+     ```sql
+     SELECT * FROM Author WHERE id = ?; -- This query is executed for each book
+     ```
+
+   - **Total Queries:** You end up with 1 query to fetch books + 10 queries to fetch authors = 11 queries in total.
+
+### How to Address the N+1 Problem
+
+To solve the N+1 selects problem, you can use techniques such as:
+
+1. **Fetch Joins:**
+   Modify your query to fetch the `Author` along with the `Book` in a single query using a join:
+   ```java
+   String hql = "SELECT b FROM Book b JOIN FETCH b.author";
+   List<Book> books = session.createQuery(hql, Book.class).getResultList();
+   ```
+   This approach ensures that the books and their authors are retrieved in a single query.
+
+2. **Batch Fetching:**
+   Configure batch fetching to reduce the number of queries. This can be set up in Hibernate configuration:
+   ```properties
+   hibernate.default_batch_fetch_size=10
+   ```
+   This setting tells Hibernate to fetch associations in batches rather than one at a time.
+
+### Summary
+
+The N+1 selects problem arises when fetching an entity along with its associations, leading to excessive queries and potential performance issues. It’s often resolved by using fetch joins or batch fetching to optimize the number of queries executed.
