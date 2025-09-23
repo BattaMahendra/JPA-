@@ -10,6 +10,7 @@ import java.util.List;
 //import jakarta.persistence.JoinColumn;
 //import jakarta.persistence.OneToMany;
 //import jakarta.persistence.SequenceGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import javax.persistence.*;
@@ -48,19 +49,19 @@ public class Teacher {
 
 	private String teacherName;
 	
-//	this will create column in course table 
+//	this will create column in course table
 //	it wont create any table in the teachers table
-//	a teacher_id column is created in the course table 
+//	a teacher_id column is created in the course table
 	
-//	@OneToMany(
-//			cascade = CascadeType.ALL
-//			)
-//	@JoinColumn(
-//
-//			name="teacher_id",
-//			referencedColumnName = "teacherId"
-//			)
-//	private List<Course> courseList;
+	@OneToMany(
+			cascade = CascadeType.ALL, fetch =  FetchType.EAGER  //by default fetch type of oneToMany is lazy and I am overriding it manually here
+			)
+	@JoinColumn(
+
+			name="teacher_id",
+			referencedColumnName = "teacherId"
+			)
+	private List<Course> courseList;
 
 	public long getTeacherId() {
 		return teacherId;
@@ -78,12 +79,12 @@ public class Teacher {
 		this.teacherName = teacherName;
 	}
 
-//	public List<Course> getCourseList() {
-//		return courseList;
-//	}
-//
-//	public void setCourseList(List<Course> courseList) {
-//		this.courseList = courseList;
-//	}
+	public List<Course> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(List<Course> courseList) {
+		this.courseList = courseList;
+	}
 	
 }

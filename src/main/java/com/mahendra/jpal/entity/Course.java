@@ -60,7 +60,7 @@ public class Course {
 
 	// One course can have many number of materials
 	//this will create a 'course_id' coloumn in course_material table
-	@OneToMany(
+	@OneToMany(cascade = CascadeType.ALL,
 			mappedBy = "course"
 			)
 	private Set<CourseMaterial> courseMaterials;
@@ -73,9 +73,10 @@ public class Course {
 	@JoinColumn(
 				name="teacher_id",
 				referencedColumnName = "teacherId"
-				
-			
+
+
 			)
+@JsonIgnore
 	private Teacher teacher;
 	
 //	multiple students can opt multiple courses 
@@ -88,13 +89,15 @@ public class Course {
 							CascadeType.PERSIST,
 							CascadeType.MERGE,
 							CascadeType.DETACH,
-							CascadeType.REFRESH
+							CascadeType.REFRESH,
+
+							CascadeType.ALL
 					}
 					)
 	@JoinTable(
 //		this is the table that will be newly created	
 			name="student_course_table",
-//			it is for the colomn of courseId and to map it 
+//			it is for the column of courseId and to map it
 			joinColumns = @JoinColumn(
 								name="c_id",
 								referencedColumnName = "courseId"
@@ -107,6 +110,7 @@ public class Course {
 								referencedColumnName = "studentId"
 					)
 			)
+	@JsonIgnore
 	private Set<Student> students ;
 	
 	

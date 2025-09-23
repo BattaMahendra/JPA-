@@ -57,4 +57,9 @@ public class CourseController {
 	public CourseMaterial addAcourseMaterial(@RequestBody CourseMaterial c) {
 		return courseMaterialRepository.save(c);
 	}
+
+	@PostMapping("/addCourseList")
+	public List<Course> addCourseList(@RequestBody  List<Course> courses){
+		return courseRepository.saveAll(courses);
+	}
 }

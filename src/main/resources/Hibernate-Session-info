@@ -19,16 +19,20 @@ Transaction Management: Hibernate provides a higher-level API for transaction ma
 
 Object Mapping: Hibernate automatically maps Java objects to database tables, eliminating the need for manual SQL queries and result set processing as required in JDBC.
 
-Session management in Hibernate refers to the way Hibernate handles interactions with the database through a `Session` object. It plays a crucial role in managing the lifecycle of entities, transaction management, and ensuring efficient database operations. Here’s a detailed explanation of session management in Hibernate:
+Session management in Hibernate refers to the way Hibernate handles interactions with the database through a `Session` object.
+It plays a crucial role in managing the lifecycle of entities, transaction management, and ensuring efficient database operations.
+Here’s a detailed explanation of session management in Hibernate:
 ### Key Aspects of Session Management:
 
 1. **Session Object:**
    - The `Session` object in Hibernate is the primary interface used to interact with the database. It is responsible for managing CRUD operations, querying the database, and maintaining the state of entities.
 
 2. **Session Lifecycle:**
-   - **Creation:** A `Session` is created using a `SessionFactory`, which is a thread-safe object and should be created once per application. The `SessionFactory` is responsible for creating `Session` instances.
+   - **Creation:** A `Session` is created using a `SessionFactory`, which is a thread-safe object and should be created once per application.
+            The `SessionFactory` is responsible for creating `Session` instances.
    - **Usage:** Once created, the `Session` is used to perform various operations such as saving, updating, deleting, and retrieving entities.
-   - **Closing:** After completing the operations, the `Session` should be closed to release database connections and resources. This is typically done in a `finally` block or using try-with-resources statements.
+   - **Closing:** After completing the operations, the `Session` should be closed to release database connections and resources.
+                This is typically done in a `finally` block or using try-with-resources statements.
 
 3. **Session Methods:**
    - **CRUD Operations:**

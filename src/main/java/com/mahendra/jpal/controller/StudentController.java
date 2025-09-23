@@ -3,6 +3,7 @@ package com.mahendra.jpal.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.mahendra.jpal.entity.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -79,5 +80,11 @@ public class StudentController {
 		return null;
 		
 	}
+
+	@PostMapping("/addAll")
+	public List<Student> addAllStudents(@RequestBody List<Student> students){
+		return studentRepository.saveAll(students);
+	}
+
 
 }

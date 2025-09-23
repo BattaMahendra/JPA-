@@ -54,7 +54,7 @@ public class CourseMaterial {
 //			we use cascade to enter data into course table from course material
 //			whenever we add a new course material , the course is directly added into course table
 			
-				//cascade = CascadeType.ALL,
+				cascade = CascadeType.ALL,
 				
 				fetch = FetchType.LAZY
 			
@@ -66,7 +66,7 @@ public class CourseMaterial {
 					referencedColumnName = "courseId"
 			
 			)
-	@LazyToOne(value = LazyToOneOption.NO_PROXY)
+	//@LazyToOne(value = LazyToOneOption.NO_PROXY)
 	@JsonIgnore
 	private Course course;
 

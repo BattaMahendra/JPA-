@@ -113,3 +113,14 @@ public class WithOnlyJDBC {
     }
 
 }
+
+/*
+*
+* JDBC only with JAVA
+*
+* 1. You need to establish connection and open the connection using Driver and close it manually
+* 2. You need to write queries and add them in prepared statements and manually execute them
+* 3. Then extract objects from resultSets by iteration
+*
+* All this you have to do manually which gives you complete control.
+* More boiler plate code. Exhausting for all entity classes to implement*/

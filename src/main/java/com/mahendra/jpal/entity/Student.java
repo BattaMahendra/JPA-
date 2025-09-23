@@ -80,7 +80,7 @@ public class Student {
 	//one to one mapping with Address class primary key addressId
 	//this will create 'address_id' coloumn in student table.
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "addressId")
+	@JoinColumn(name = "addressId", referencedColumnName = "addressId")
 	private Address address;
 
 
