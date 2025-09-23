@@ -37,6 +37,11 @@ public class TeacherController2 {
         teacherService.deleteByIdJpa(id);
     }
 
+    @GetMapping("/states")
+    public void learnHIbernateStates(){
+        teacherService.learnHibernateStates();
+    }
+
     // Hibernate endpoints
     @GetMapping("/hibernate")
     public List<Teacher> getAllTeachersHibernate() {

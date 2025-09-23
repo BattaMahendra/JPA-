@@ -40,6 +40,44 @@ public class TeacherService {
         teacherRepository.deleteById(id);
     }
 
+    public void learnHibernateStates(){
+
+        // 1️⃣ Transient
+       Teacher teacher = new Teacher();
+       teacher.setTeacherName("Ranga Naidu");
+        System.out.println("Transient state : "+teacher);
+
+        // 2️⃣ Persistent
+        //now it will be save into DB
+        Teacher teacherFromDB = teacherRepository.save(teacher); // persistent state
+        long id = teacherFromDB.getTeacherId();
+
+        /*
+        * The teacher is still tracked but not committed into DB yet*/
+        teacher.setTeacherName(teacher.getTeacherName() +" Updated"); // not saved in db
+
+        teacherRepository.flush(); //  // forces UPDATE to DB now
+
+
+        // 3️⃣ Detached
+        // Simulate detach by clearing persistence context
+
+        // in real JPA EntityManager: em.detach(emp) or transaction ends
+        // here we assume emp is detached
+        System.out.println("\n\nDetached: making changes won't be auto-saved");
+        teacher.setTeacherName(teacher.getTeacherName()+" detached"); // not tracked now
+
+        // 4️⃣ Merge
+        teacher.setTeacherName(teacher.getTeacherName()+" detached");
+        teacherRepository.save(teacher); // merges detached entity, updates DB
+
+        // finally delete for retesting everytime
+        teacherRepository.deleteById(id);
+
+
+    }
+
+
     // Hibernate methods
     public List<Teacher> findAllHibernate() {
         return hibernateTeacherRepository.findAll();

@@ -7,6 +7,8 @@ import com.mahendra.jpal.entity.Teacher;
 @Repository
 public interface TeacherRepository  extends JpaRepository<Teacher, Long> {
 
+    public Teacher findByTeacherName(String name);
+
 }
 
 

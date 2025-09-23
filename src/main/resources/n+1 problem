@@ -51,7 +51,8 @@ public class Author {
      ```sql
      SELECT * FROM Book;
      ```
-   - **Step 2:** For each book in the result set, Hibernate will execute an additional query to fetch the author for that book, due to the `@ManyToOne` relationship being lazy-loaded. If you have 10 books, Hibernate will execute 10 additional queries, one for each book to get its author.
+   - **Step 2:** For each book in the result set, Hibernate will execute an additional query to fetch the author for that book, due to the `@ManyToOne` relationship being lazy-loaded.
+                If you have 10 books, Hibernate will execute 10 additional queries, one for each book to get its author.
 
      For example:
      ```sql
