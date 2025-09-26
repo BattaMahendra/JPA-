@@ -38,7 +38,14 @@ public class HibernateTeacherRepository {
     public void deleteById(Long id) {
         Teacher teacher = em.find(Teacher.class, id);
         em.remove(teacher);
+    }
 
+    @Transactional
+    public void learningAboutSessions(){
+
+        Session session = (Session) em.unwrap(Teacher.class);
+
+        //
     }
 
 }

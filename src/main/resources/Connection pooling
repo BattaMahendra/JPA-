@@ -2,11 +2,14 @@ Sure! Let’s break down connection pooling and how it's achieved using HikariCP
 
 ### What is Connection Pooling?
 
-Connection pooling is a technique used to manage database connections efficiently. Instead of opening and closing a new connection every time your application needs to interact with the database (which is slow and resource-intensive), a pool of connections is maintained. This pool of connections can be reused, which reduces the overhead of creating and destroying connections and improves performance.
+Connection pooling is a technique used to manage database connections efficiently.
+ Instead of opening and closing a new connection every time your application needs to interact with the database (which is slow and resource-intensive), a pool of connections is maintained.
+  This pool of connections can be reused, which reduces the overhead of creating and destroying connections and improves performance.
 
 ### What is HikariCP?
 
-HikariCP is a high-performance JDBC connection pool library. It is widely used for its speed and efficiency. Spring Boot integrates with HikariCP to manage database connections efficiently.
+HikariCP is a high-performance JDBC connection pool library. It is widely used for its speed and efficiency.
+Spring Boot integrates with HikariCP to manage database connections efficiently.
 
 ### How HikariCP Works
 
@@ -137,6 +140,7 @@ Here's a simple example of how you might configure and use HikariCP in a Spring 
 ### Summary
 
 HikariCP provides efficient connection pooling, reducing the overhead of creating and destroying database connections.
-In Spring Boot, configuring HikariCP is straightforward through the `application.properties` or `application.yml` files, and Spring Boot's auto-configuration handles the rest.
+In Spring Boot, configuring HikariCP is straightforward through the `application.properties` or `application.yml` files,
+and Spring Boot's auto-configuration handles the rest.
 Proper configuration helps optimize database interactions, leading to better application performance.
 

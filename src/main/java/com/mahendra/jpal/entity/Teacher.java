@@ -19,6 +19,9 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @Table(name = "teacher")
+// used when you want to listen to entity lifecycle events (like before insert, after update, before delete, etc.)
+// and execute some custom logic automatically
+@EntityListeners(AuditEntityListener.class)  // used for logging around session methods
 public class Teacher {
 
 	
@@ -88,3 +91,45 @@ public class Teacher {
 	}
 	
 }
+
+
+
+
+ class AuditEntityListener {
+
+	@PrePersist
+	public void beforeInsert(Object obj) {
+		System.out.println("\n EntityListener- Logging: About to insert: " + obj);
+	}
+
+	@PostPersist
+	public void afterInsert(Object obj) {
+		System.out.println("\n EntityListener- Logging: Inserted: " + obj);
+	}
+
+	@PreUpdate
+	public void beforeUpdate(Object obj) {
+		System.out.println("\n EntityListener- Logging: About to update: " + obj);
+	}
+
+	@PostUpdate
+	public void afterUpdate(Object obj) {
+		System.out.println("\n EntityListener- Logging: Updated: " + obj);
+	}
+
+	@PreRemove
+	public void beforeDelete(Object obj) {
+		System.out.println("\n EntityListener- Logging: About to delete: " + obj);
+	}
+
+	@PostRemove
+	public void afterDelete(Object obj) {
+		System.out.println("\n EntityListener- Logging: Deleted: " + obj);
+	}
+
+	@PostLoad
+	public void afterLoad(Object obj) {
+		System.out.println("\n EntityListener- Logging: Entity loaded: " + obj);
+	}
+}
+

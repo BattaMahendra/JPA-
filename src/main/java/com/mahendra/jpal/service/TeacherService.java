@@ -39,7 +39,13 @@ public class TeacherService {
     public void deleteByIdJpa(Long id) {
         teacherRepository.deleteById(id);
     }
-
+/**
+ * Following are important states in Hibernate
+ * 1. Transient
+ * 2. Persistent
+ * 3. Detached
+ * 4. Merge
+ * */
     public void learnHibernateStates(){
 
         // 1️⃣ Transient
@@ -57,6 +63,7 @@ public class TeacherService {
         teacher.setTeacherName(teacher.getTeacherName() +" Updated"); // not saved in db
 
         teacherRepository.flush(); //  // forces UPDATE to DB now
+
 
 
         // 3️⃣ Detached

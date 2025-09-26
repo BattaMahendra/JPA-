@@ -23,7 +23,8 @@ try {
 ### 2. **`DataAccessException`**
 
 **Description:**
-A Spring exception that wraps Hibernate exceptions for data access operations. It's a runtime exception that serves as a general exception for database access issues.
+A Spring exception that wraps Hibernate exceptions for data access operations.
+ It's a runtime exception that serves as a general exception for database access issues.
 
 **Handling:**
 - **Use Spring’s `@ExceptionHandler`:** Define exception handling methods in controllers using `@ExceptionHandler` for a consistent response.
@@ -81,7 +82,8 @@ try {
 ### 5. **`TransactionRequiredException`**
 
 **Description:**
-Thrown when a transactional operation is performed outside of an active transaction. This often occurs if a database operation is executed without starting a transaction.
+Thrown when a transactional operation is performed outside of an active transaction.
+ This often occurs if a database operation is executed without starting a transaction.
 
 **Handling:**
 - **Ensure Transactions:** Ensure that transactional operations are performed within a proper transaction context.
