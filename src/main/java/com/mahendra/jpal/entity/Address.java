@@ -25,7 +25,7 @@ public class Address {
     private String country;
     private long pincode;
 
-    //bi-directional mapping with Student class
+    //bidirectional mapping with Student class
     //this way it makes sure that only foreign key is created in student table and it's not needed in address table
     @OneToOne(mappedBy = "address")
     @JsonIgnore  // Used to avoid getting recursive student and address in the output.

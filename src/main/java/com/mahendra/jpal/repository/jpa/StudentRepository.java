@@ -25,14 +25,14 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	
 	public List<Student> findByStudentName(String studentName);
 	
-//	here parent is a embedded class in the student class
+//	here parent is an embedded class in the student class
 //	so in order to find student records by parent name 
 //	just define embedded class name (Parent) followed by
 //	particular variable in that embedded class(parentName) by proper java syntax
 	
 	public List<Student> findByParentParentName(String parentName);
 	
-//	this is JPL query and it is different from native SQL queries
+//	this is JPL query, and it is different from native SQL queries
 //	here instead of table names we use class names
 //	the ?1 means take the first parameter as value for the query	
 	

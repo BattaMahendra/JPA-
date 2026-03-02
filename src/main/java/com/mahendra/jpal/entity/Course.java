@@ -61,7 +61,9 @@ public class Course {
 	// One course can have many number of materials
 	//this will create a 'course_id' coloumn in course_material table
 	@OneToMany(cascade = CascadeType.ALL,
-			mappedBy = "course"
+			mappedBy = "course",
+			fetch = FetchType.LAZY
+
 			)
 	private Set<CourseMaterial> courseMaterials;
 	

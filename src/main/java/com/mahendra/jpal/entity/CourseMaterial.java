@@ -18,6 +18,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity
+//@ToString
 public class CourseMaterial {
 	
 	public CourseMaterial() {

@@ -32,7 +32,7 @@ import java.util.Set;
 		uniqueConstraints = @UniqueConstraint(
 				
 				name="email_unique",
-				columnNames = "studentEmail"
+				columnNames = "student_email"
 				
 				)
 
@@ -71,7 +71,7 @@ public class Student {
 	    )
 	private long studentId;
 	private String studentName;
-	@Column(nullable = false)
+	@Column(name = "student_email", nullable = false)
 	private String studentEmail;
 	@Embedded
 	private Parent parent;

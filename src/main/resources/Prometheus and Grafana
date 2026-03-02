@@ -1,0 +1,10 @@
+
+If you want to see statistics in Grafana, you need to install Prometheus and Grafana.
+
+--> I have installed Grafana and Prometheus on my local machine.
+
+--> Go to C folder --> tools --> prometheus --> run the app
+--> Then go to web and hit http://localhost:9090/targets to see the targets that are being monitored by Prometheus. You should see your application listed there.
+--> Now, open Grafana by going to http://localhost:3000/ and log in with the default credentials (admin/admin).
+--> Once logged in, click on "Add your first data source" and select "Prometheus" from the list of available data sources.
+--> In the Prometheus data source configuration, set the URL to http://localhost:9090/ and click "Save & Test" to ensure that Graf

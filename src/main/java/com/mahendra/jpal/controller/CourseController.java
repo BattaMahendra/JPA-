@@ -26,8 +26,11 @@ public class CourseController {
 	
 	@GetMapping("/gC")
 	public List<Course> getAllCourses(){
+
+		List<Course> courseList = courseRepository.findAll();
+		courseList.get(0).getCourseMaterials().forEach(System.out::println);
 		
-		return courseRepository.findAll();
+		return courseList;
 		
 	}
 	@PostMapping("/addC")
