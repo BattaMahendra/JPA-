@@ -1,7 +1,6 @@
 package com.mahendra.jpal.entity;
 
-//import jakarta.persistence.Embeddable;
-import javax.persistence.*;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Parent {

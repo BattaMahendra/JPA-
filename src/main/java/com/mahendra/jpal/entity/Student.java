@@ -1,14 +1,18 @@
 package com.mahendra.jpal.entity;
 
-//import jakarta.persistence.Column;
-//import jakarta.persistence.Embedded;
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
-//import jakarta.persistence.Id;
-//import jakarta.persistence.SequenceGenerator;
-//import jakarta.persistence.Table;
-//import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +22,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.engine.internal.Cascade;
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
