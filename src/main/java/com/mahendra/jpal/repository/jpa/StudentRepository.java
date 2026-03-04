@@ -10,9 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mahendra.jpal.entity.Student;
 
-//import jakarta.transaction.Transactional;
-
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {

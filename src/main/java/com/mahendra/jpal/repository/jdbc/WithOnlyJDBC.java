@@ -3,7 +3,7 @@ package com.mahendra.jpal.repository.jdbc;
 import com.mahendra.jpal.entity.Teacher;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

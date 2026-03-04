@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import jakarta.persistence.*;
-import jakarta.xml.bind.annotation.XmlMixed;
 import java.util.UUID;
 
 @Entity
