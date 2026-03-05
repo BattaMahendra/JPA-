@@ -13,6 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 import jakarta.persistence.*;
 import java.util.List;
 
+/*
+* Here we are using JPA with Hibernate
+* Mind you JPA and Spring DATA JPA are different
+* */
 @Repository
 public class HibernateTeacherRepository {
 
