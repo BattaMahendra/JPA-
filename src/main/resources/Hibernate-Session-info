@@ -11,6 +11,11 @@ ORM frameworks manage the lifecycle of entities and handle the interaction betwe
 
 plain jdbc vs Hibernate:
 
+---> JDBC (Java Database Connectivity) is a low-level API used to interact directly with the database.
+---> Hibernate is an ORM (Object Relational Mapping) framework. Instead of writing SQL manually, developers work with Java objects, and Hibernate generates SQL automatically.
+---> Hibernate Internally uses JDBC
+
+
 Hibernate vs. Plain JDBC
 
 Session Management: Hibernate abstracts session management compared to plain JDBC, where you manually manage connections, statements, and result sets.
@@ -25,7 +30,8 @@ Here’s a detailed explanation of session management in Hibernate:
 ### Key Aspects of Session Management:
 
 1. **Session Object:**
-   - The `Session` object in Hibernate is the primary interface used to interact with the database. It is responsible for managing CRUD operations, querying the database, and maintaining the state of entities.
+   - The `Session` object in Hibernate is the primary interface used to interact with the database. It is responsible for managing CRUD operations, querying the database, and
+     maintaining the state of entities.
 
 2. **Session Lifecycle:**
    - **Creation:** A `Session` is created using a `SessionFactory`, which is a thread-safe object and should be created once per application.
@@ -48,8 +54,29 @@ Here’s a detailed explanation of session management in Hibernate:
      - `rollback()`: Rolls back the current transaction, discarding all changes made during the transaction.
 
 4. **Session Cache:**
-   - **First-Level Cache:** Each `Session` has its own first-level cache, which is also known as the session cache. This cache is used to store entities and their state during the lifecycle of the `Session`. It ensures that each entity is loaded only once per session and is kept in memory for efficient access.
-   - **Second-Level Cache:** This cache is optional and shared among multiple `Session` instances. It is used to cache data across sessions and can be configured to improve performance. Hibernate supports various caching providers for second-level caching.
+   - **First-Level Cache:** Each `Session` has its own first-level cache, which is also known as the session cache.
+                            This cache is used to store entities and their state during the lifecycle of the `Session`.
+                            It ensures that each entity is loaded only once per session and is kept in memory for efficient access.
+
+
+Session    --> Created by SessionFactory
+   │
+   │ manages
+   ▼
+Persistence Context   --> A logical container managed by Session. Here all the entities are stored.
+   │
+   │ contains
+   ▼
+First Level Cache
+   │
+   │ stores
+   ▼
+Managed Entities
+
+
+
+   - **Second-Level Cache:** This cache is optional and shared among multiple `Session` instances.
+                             It is used to cache data across sessions and can be configured to improve performance. Hibernate supports various caching providers for second-level caching.
 
 5. **Transaction Management:**
    - **Automatic Transactions:** In some setups, such as when using Spring’s transaction management, transactions can be managed automatically. In such cases, the `Session` is bound to a transaction managed by the Spring container.

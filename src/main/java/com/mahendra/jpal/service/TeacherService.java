@@ -79,7 +79,7 @@ public class TeacherService {
         teacherRepository.save(teacher); // merges detached entity, updates DB
 
         // finally delete for retesting everytime
-        teacherRepository.deleteById(id);
+       // teacherRepository.deleteById(id);
 
 
     }

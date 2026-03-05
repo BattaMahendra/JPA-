@@ -1,0 +1,76 @@
+
+
+                                        Application Code
+                                              │
+                                              ▼
+                                        Spring Data JPA
+                                              │
+                                              ▼
+                                        JPA (Specification)
+                                              │
+                                              ▼
+                                        Hibernate (ORM implementation)
+                                              │
+                                              ▼
+                                        JDBC (Low-level API)
+                                              │
+                                              ▼
+                                        Database
+
+
+👉 Spring DATA JPA --> Spring Data JPA is a Spring framework module that simplifies JPA usage. --->  Highest Level Abstraction
+
+| Term                         | Meaning                      |
+| ---------------------------- | ---------------------------- |
+| `JpaRepository`              | Default CRUD repository      |
+| `CrudRepository`             | Basic repository abstraction |
+| `PagingAndSortingRepository` | Pagination support           |
+| `Derived Queries`            | Queries from method names    |
+| `@Query`                     | Custom JPQL queries          |
+| `Specification`              | Dynamic queries              |
+| `Pageable`                   | Pagination support           |
+| `Projection`                 | Partial data retrieval       |
+
+👉 JPA --> JPA is a specification, not an implementation. It defines standard APIs for ORM frameworks.
+(Java Persistence API – Specification)
+
+
+| Term                  | Meaning                                  |
+| --------------------- | ---------------------------------------- |
+| `EntityManager`       | Main API for persistence operations      |
+| `Persistence Context` | Managed entity environment               |
+| `Entity Lifecycle`    | Transient → Persistent → Detached        |
+| `JPQL`                | Java Persistence Query Language          |
+| `Criteria API`        | Type-safe query building                 |
+| `Flush`               | Synchronize persistence context with DB  |
+| `Cascade Types`       | Propagate operations to related entities |
+| `Fetch Types`         | Lazy vs eager loading                    |
+
+
+👉 Hibernate ---> ORM (implementation of JPA --> can be changed to diff providers --> EclipseLink, OpenJPA
+
+| Term                | Meaning                              |
+| ------------------- | ------------------------------------ |
+| `SessionFactory`    | Creates Hibernate sessions           |
+| `Session`           | Main interface for DB operations     |
+| `Transaction`       | Manages atomic operations            |
+| `First Level Cache` | Session-level caching                |
+| `Lazy Loading`      | Load data only when needed           |
+| `Dirty Checking`    | Detects object changes automatically |
+| `HQL`               | Hibernate Query Language             |
+| `Mapping`           | Object ↔ table mapping               |
+
+
+
+👉 JDBC  ---> Low level API to interact with the database from java application
+
+| Term                      | Meaning                    |
+| ------------------------- | -------------------------- |
+| `DriverManager`           | Loads database driver      |
+| `Connection`              | Represents DB connection   |
+| `Statement`               | Executes SQL               |
+| `PreparedStatement`       | Precompiled SQL query      |
+| `ResultSet`               | Holds query results        |
+| `commit()` / `rollback()` | Transaction management     |
+| `Batch processing`        | Multiple queries execution |
+

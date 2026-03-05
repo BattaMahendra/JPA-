@@ -77,6 +77,76 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 			)
 	int updateAStudentNameByEmailAddress(String name,String emailAddress);
 	
-	
+
+
+
+
+	// ========== Predefined JPA Methods using AND operator ==========
+	public List<Student> findByStudentNameAndAge(String studentName, int age);
+
+	public List<Student> findByStudentNameAndStudentEmail(String studentName, String studentEmail);
+
+	public List<Student> findByAgeAndParentParentName(int age, String parentName);
+
+
+	// ========== Predefined JPA Methods using OR operator ==========
+	public List<Student> findByStudentNameOrStudentEmail(String studentName, String studentEmail);
+
+	public List<Student> findByStudentNameOrAge(String studentName, int age);
+
+
+	// ========== Predefined JPA Methods using LIKE (Contains) ==========
+	public List<Student> findByStudentNameContaining(String studentName);
+
+	public List<Student> findByStudentEmailContaining(String emailPart);
+
+
+	// ========== Predefined JPA Methods using StartingWith and EndingWith ==========
+	public List<Student> findByStudentNameStartingWith(String prefix);
+
+	public List<Student> findByStudentNameEndingWith(String suffix);
+
+	public List<Student> findByParentParentNameContaining(String parentNamePart);
+
+	public List<Student> findByParentParentEmailContaining(String parentEmailPart);
+
+
+	// ========== Predefined JPA Methods with multiple conditions ==========
+	public List<Student> findByStudentNameContainingAndAge(String studentName, int age);
+
+	public List<Student> findByStudentNameContainingOrStudentEmailContaining(String name, String email);
+
+
+	// ========== Predefined JPA Methods with comparison operators ==========
+	public List<Student> findByAgeGreaterThan(int age);
+
+	public List<Student> findByAgeLessThan(int age);
+
+	public List<Student> findByAgeGreaterThanAndStudentNameContaining(int age, String studentName);
+
+	public List<Student> findByAgeBetween(int minAge, int maxAge);
+
+
+	// ========== Predefined JPA Methods with OrderBy ==========
+	public List<Student> findByStudentNameOrderByAge(String studentName);
+
+	public List<Student> findAllByOrderByStudentNameAsc();
+
+	public List<Student> findAllByOrderByAgeDesc();
+
+	public List<Student> findByParentParentNameOrderByStudentNameAsc(String parentName);
+
+
+	// ========== Predefined JPA Methods checking for null/not null ==========
+	public List<Student> findByStudentEmailIsNotNull();
+
+	public List<Student> findByStudentNameIsNotNull();
+
+
+	// ========== Predefined JPA Methods with IgnoreCase ==========
+	public List<Student> findByStudentNameIgnoreCase(String studentName);
+
+	public List<Student> findByStudentNameContainingIgnoreCase(String studentName);
 
 }
+

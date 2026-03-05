@@ -2,6 +2,7 @@ package com.mahendra.jpal.controller;
 
 
 import com.mahendra.jpal.entity.Teacher;
+import com.mahendra.jpal.service.HibernateConceptsService;
 import com.mahendra.jpal.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class TeacherController2 {
 
     @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    private HibernateConceptsService hibernateConceptsService;
 
     // Spring Data JPA endpoints
     @GetMapping("/jpa")
@@ -39,7 +43,7 @@ public class TeacherController2 {
 
     @GetMapping("/states")
     public void learnHIbernateStates(){
-        teacherService.learnHibernateStates();
+        hibernateConceptsService.demonstrateEntityLifecycle();
     }
 
     // Hibernate endpoints
